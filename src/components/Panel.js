@@ -1,18 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Panel extends Component {
-  render() {
-    const { label, value } = this.props;
+const Panel = ({ id, label, value, onSelect }) => {
+  const handleClick = () => {
+    onSelect(id);
+  };
 
-    return (
-      <section
-        className="dashboard__panel"
-      >
-        <h1 className="dashboard__panel-header">{label}</h1>
-        <p className="dashboard__panel-value">{value}</p>
-      </section>
-    );
-  }
-}
+  return (
+    <div className="panel" onClick={handleClick}>
+      <h2 className="panel__label">{label}</h2>
+      <div className="panel__value">{value}</div>
+    </div>
+  );
+};
 
 export default Panel;
