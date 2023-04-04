@@ -31,7 +31,10 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       loading: false,
-      focused: null
+      focused: null,
+      days: [],
+      appointments: {},
+      interviewers: {},
     };
     this.selectPanel = this.selectPanel.bind(this);
   }
