@@ -62,6 +62,12 @@ class Dashboard extends Component {
     });
   }
 
+    componentWillUnmount() {
+      if (this.socket) {
+        this.socket.close();
+      }
+    }
+
   componentDidUpdate() {
     //code
   }
