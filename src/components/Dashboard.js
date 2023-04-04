@@ -47,7 +47,6 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
@@ -59,6 +58,7 @@ class Dashboard extends Component {
         appointments: appointments.data,
         interviewers: interviewers.data
       });
+      this.socket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
     });
   }
 
