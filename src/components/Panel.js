@@ -1,12 +1,8 @@
 import React from "react";
 
-const Panel = ({ id, label, value, onSelect }) => {
-  const handleClick = () => {
-    onSelect(id);
-  };
-
+const Panel = ({ label, value, onSelect }) => {
   return (
-    <div className="panel" onClick={handleClick}>
+    <div className="panel" onClick={onSelect}>
       <h2 className="panel__label">{label}</h2>
       <div className="panel__value">{value}</div>
     </div>

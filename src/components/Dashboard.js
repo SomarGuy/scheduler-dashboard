@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import classnames from "classnames";
 import Loading from "./Loading";
 import Panel from "./Panel";
+
 const data = [
   {
     id: 1,
@@ -26,14 +27,20 @@ const data = [
 ];
 
 class Dashboard extends Component {
-  state = {
-    loading: false,
-    focused: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      focused: null
+    };
+    this.selectPanel = this.selectPanel.bind(this);
+  }
 
-  selectPanel = (id) => {
-    this.setState({ focused: id });
-  };
+  selectPanel(id) {
+    this.setState(prevState => ({
+      focused: prevState.focused === id ? null : id
+    }));
+  }
 
   render() {
     const dashboardClasses = classnames("dashboard", {
@@ -51,10 +58,9 @@ class Dashboard extends Component {
       const panels = filteredData.map(panel => (
         <Panel
           key={panel.id}
-          id={panel.id}
           label={panel.label}
           value={panel.value}
-          onSelect={this.selectPanel}
+          onSelect={() => this.selectPanel(panel.id)}
         />
       ));
 
